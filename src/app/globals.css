@@ -25,3 +25,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+img {
+  @apply transition-all ease-in-out duration-300 hover:scale-105;
+}
