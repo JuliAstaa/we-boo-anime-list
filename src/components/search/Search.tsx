@@ -8,11 +8,20 @@ const Search = () => {
   const inputRef: any = useRef();
   const selectRef: any = useRef();
   const router = useRouter();
-  const search = "search";
 
   const handleSearch = (e: any) => {
     e.preventDefault();
-    router.push(`/search/${selectRef.current.value}/${inputRef.current.value}`);
+    if (inputRef.current.value.length == 0) {
+      if (selectRef.current.value == "anime") {
+        router.push("/popular-anime");
+      } else {
+        router.push("/top-manga");
+      }
+    } else {
+      router.push(
+        `/search/${selectRef.current.value}/${inputRef.current.value}`
+      );
+    }
     inputRef.current.value = "";
   };
 

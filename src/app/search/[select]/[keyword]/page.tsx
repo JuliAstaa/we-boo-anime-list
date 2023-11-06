@@ -1,26 +1,21 @@
+import { FetchingData } from "@/libs/api-libs";
 import Body from "@/components/Body/Body";
 import TopList from "@/components/TopList/TopList";
 import BoxContainer from "@/components/utils/BoxContainer/BoxContainer";
 import BoxContainerHeader from "@/components/utils/BoxContainer/BoxContainerHeader";
 
 const SearchPage = async ({ params }: any) => {
-  const respone = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/${params.select}?q=${params.keyword}`
-  );
-
-  const datas = await respone.json();
-  const data = datas.data;
-
   const url = params.keyword;
+  const href = params.select;
   const keyword = url.replace(/%20/g, " ");
-
+  const data = await FetchingData(`${params.select}`, `q=${params.keyword}`);
   return (
     <Body>
       <BoxContainerHeader
         title={`Pencarian berdasarkan "${params.select}" dengan keyword "${keyword}" `}
       />
       <BoxContainer>
-        <TopList api={data} href={params.select} />
+        <TopList api={data.data} href={href} />
       </BoxContainer>
     </Body>
   );

@@ -4,7 +4,7 @@ import Link from "next/link";
 const BoxContainerHeader = ({ title, href }: any) => {
   return (
     <div className="box-header w-full flex justify-between">
-      <h1 className="text-xl font-semibold border-b-2 border-slate-700 w-fit text-sky-500">
+      <h1 className=" font-semibold border-b-2 border-slate-700 w-fit text-sky-500 lg:text-xl">
         {title}
       </h1>
       {href ? (
